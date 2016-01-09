@@ -13,7 +13,7 @@ typedef struct node
     TAILQ_ENTRY(node) nodes;
 } node_t;
 // This typedef creates a head_t that makes it easy for us to pass pointers to
-// head_t without the compiler comlaining.
+// head_t without the compiler complaining.
 typedef TAILQ_HEAD(head_s, node) head_t;
 
 // Takes a string and puts in in the queue on character at a time.
