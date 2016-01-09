@@ -17,7 +17,7 @@ typedef struct node
 typedef TAILQ_HEAD(head_s, node) head_t;
 
 // Takes a string and puts in in the queue on character at a time.
-static void _fill_list(head_t * head, const char * string)
+static void _fill_queue(head_t * head, const char * string)
 {
     int c = 0;
     for (c = 0; c < strlen(string); ++c)
@@ -35,7 +35,7 @@ static void _fill_list(head_t * head, const char * string)
 }
 
 // Removes all of the elements from the queue before free()ing them.
-static void _free_list(head_t * head)
+static void _free_queue(head_t * head)
 {
     struct node * e = NULL;
     while (!TAILQ_EMPTY(head))
@@ -47,8 +47,8 @@ static void _free_list(head_t * head)
     }
 }
 
-// Prints the queue by traversing the list forwards.
-static void _print_list(head_t * head)
+// Prints the queue by traversing the queue forwards.
+static void _print_queue(head_t * head)
 {
     struct node * e = NULL;
     TAILQ_FOREACH(e, head, nodes)
@@ -57,8 +57,8 @@ static void _print_list(head_t * head)
     }
 }
 
-// Prints the queue while traversing the list backwards.
-static void _print_list_backwards(head_t * head)
+// Prints the queue while traversing the queue backwards.
+static void _print_queue_backwards(head_t * head)
 {
     struct node * e = NULL;
     struct node * next = NULL;
@@ -68,7 +68,7 @@ static void _print_list_backwards(head_t * head)
     }
 }
 
-// Safely removes the vowels from the list
+// Safely removes the vowels from the queue
 static void _remove_vowels(head_t * head)
 {
     struct node * e = NULL;
@@ -92,22 +92,22 @@ int main (int arc, char * argv [])
     head_t head;
     TAILQ_INIT(&head); // initialize the head
 
-    // fill the list with "Hello World\n"
-    _fill_list(&head, "Hello World!\n");
+    // fill the queue with "Hello World\n"
+    _fill_queue(&head, "Hello World!\n");
 
     printf("Forwards: ");
-    _print_list(&head); // prints "Hello World!\n"
+    _print_queue(&head); // prints "Hello World!\n"
     printf("Backwards: ");
-    _print_list_backwards(&head); // prints "\n!dlroW olleH"
+    _print_queue_backwards(&head); // prints "\n!dlroW olleH"
 
-    // remove the vowels from the list
+    // remove the vowels from the queue
     _remove_vowels(&head);
     printf("\nForwards, vowels removed: ");
-    _print_list(&head); // prints "Hll Wrld!\n"
+    _print_queue(&head); // prints "Hll Wrld!\n"
 
-    // free the list
-    _free_list(&head);
-    _print_list(&head); // prints ""
+    // free the queue
+    _free_queue(&head);
+    _print_queue(&head); // prints ""
 
     return EXIT_SUCCESS;
 }

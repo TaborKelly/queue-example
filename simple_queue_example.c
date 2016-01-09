@@ -42,13 +42,13 @@ int main (int arc, char * argv [])
         e = NULL;
     }
 
-    // print the List
+    // print the queue
     TAILQ_FOREACH(e, &head, nodes)
     {
         printf("%c", e->c);
     }
 
-    // free the elements from the list
+    // free the elements from the queue
     while (!TAILQ_EMPTY(&head))
     {
         e = TAILQ_FIRST(&head);
