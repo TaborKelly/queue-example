@@ -61,8 +61,7 @@ static void _print_queue(head_t * head)
 static void _print_queue_backwards(head_t * head)
 {
     struct node * e = NULL;
-    struct node * next = NULL;
-    TAILQ_FOREACH_REVERSE_SAFE(e, head, head_s, nodes, next)
+    TAILQ_FOREACH_REVERSE(e, head, head_s, nodes)
     {
         printf("%c", e->c);
     }
